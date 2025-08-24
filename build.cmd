@@ -1,7 +1,7 @@
 @echo off
 
 setlocal enabledelayedexpansion
-:: °æ±¾ÁÐ±í
+:: ï¿½æ±¾ï¿½Ð±ï¿½
 set "PROJECTS[0]=forge_1_7_10"
 set "PROJECTS[1]=forge_1_12_2"
 set "PROJECTS[2]=forge_1_14_4"
@@ -35,77 +35,78 @@ set "PROJECTS[29]=neoforge_1_21"
 set "PROJECTS[30]=neoforge_1_21_3"
 set "PROJECTS[31]=neoforge_1_21_5"
 set "PROJECTS[32]=neoforge_1_21_6"
+set "PROJECTS[33]=fabric_1_21_1"
 
-set /a ARRAY_LENGTH=32
+set /a ARRAY_LENGTH=33
 
 cls
 
 set "LINK_SCRIPT=link.cmd"
-echo ÕýÔÚÖ´ÐÐÔ¤´¦Àí½Å±¾: %LINK_SCRIPT%
+echo ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½: %LINK_SCRIPT%
 call "%LINK_SCRIPT%" || (
-    echo Ô¤´¦Àí½Å±¾Ê§°Ü£¬ÍË³ö±àÒëÁ÷³Ì
+    echo Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½Ê§ï¿½Ü£ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     pause
     exit /b 1
 )
 
 :menu
 cls
-echo AllMusic¿Í»§¶Ë±àÒë
-echo Ñ¡ÔñÐèÒª¹¹½¨µÄ°æ±¾£º
+echo AllMusicï¿½Í»ï¿½ï¿½Ë±ï¿½ï¿½ï¿½
+echo Ñ¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä°æ±¾ï¿½ï¿½
 echo ----------------------------
 
-:: Éú³É²Ëµ¥Ñ¡Ïî
+:: ï¿½ï¿½ï¿½É²Ëµï¿½Ñ¡ï¿½ï¿½
 for /L %%i in (0,1,%ARRAY_LENGTH%) do (
     call echo  [%%i] - %%PROJECTS[%%i]%%
 )
 echo ----------------------------
-echo ÇëÊäÈëÒª±àÒëµÄÏîÄ¿±àºÅ (0-%ARRAY_LENGTH%):
+echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ (0-%ARRAY_LENGTH%):
 set /p SELECTION=?
 
-:: ÑéÖ¤ÊäÈëÊÇ·ñÎªÊý×Ö
+:: ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½
 if not defined SELECTION (
-    echo ´íÎó£ºÎ´ÊäÈë±àºÅ
+    echo ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     pause
     goto :menu
 )
 if not "%SELECTION%" == "" (
     set /a SELECTION=%SELECTION%
     if %SELECTION% LSS 0 (
-        echo ´íÎó£ºÊäÈë²»ÄÜÐ¡ÓÚ0
+        echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Ð¡ï¿½ï¿½0
         pause
         goto :menu
     )
     if %SELECTION% GEQ %ARRAY_LENGTH%+1 (
-        echo ´íÎó£ºÊäÈë³¬¹ý×î´óË÷Òý%ARRAY_LENGTH%
+        echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë³¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%ARRAY_LENGTH%
         pause
         goto :menu
     )
 )
 
-:: »ñÈ¡Ñ¡¶¨Â·¾¶²¢²ð·ÖÅÌ·û/Â·¾¶
+:: ï¿½ï¿½È¡Ñ¡ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½/Â·ï¿½ï¿½
 call set "SELECTED_PATH=%%PROJECTS[%SELECTION%]%%"
 
-:: ¼ì²éÂ·¾¶´æÔÚÐÔ
+:: ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 if not exist "%SELECTED_PATH%" (
-    echo ´íÎó£ºÂ·¾¶²»´æÔÚ - %SELECTED_PATH%
+    echo ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - %SELECTED_PATH%
     pause
     goto :menu
 )
 
-:: Ö´ÐÐÄ¿Â¼ÇÐ»»
+:: Ö´ï¿½ï¿½Ä¿Â¼ï¿½Ð»ï¿½
 cd /D "%SELECTED_PATH%"
 
-:: ÏÔÊ¾µ±Ç°Â·¾¶²¢Ö´ÐÐ±àÒë
-echo µ±Ç°¹¤×÷Ä¿Â¼£º
+:: ï¿½ï¿½Ê¾ï¿½ï¿½Ç°Â·ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð±ï¿½ï¿½ï¿½
+echo ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½
 cd
-echo ÕýÔÚÖ´ÐÐGradle±àÒë...
+echo ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Gradleï¿½ï¿½ï¿½ï¿½...
 call gradlew build
 
-:: ±àÒë½á¹û´¦Àí
+:: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 if %ERRORLEVEL% EQU 0 (
-    echo ±àÒë³É¹¦£¡Éú³ÉÎ»ÖÃ£ºbuild\libs
+    echo ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½build\libs
 ) else (
-    echo ±àÒëÊ§°Ü£¬Çë¼ì²é´íÎóÐÅÏ¢
+    echo ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 )
 pause
 
